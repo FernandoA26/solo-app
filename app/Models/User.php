@@ -41,4 +41,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+   
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+
+    public function authors()
+    {
+        return $this->morphedByMany(Author::class,'userable');
+    }
+
+    public function books()
+    {
+        return $this->morphedByMany(Book::class,'userable');
+    }
 }
